@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+body {
+    font-family: 'Josefin Sans',
+    sans-serif;
+    background: #134E5E;
+    background: -webkit-linear-gradient(to right, #71B280, #134E5E);
+    background: linear-gradient(to right, #71B280, #134E5E);
+    color: white;
+    font-size: 16px;
+}
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffffff00;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.msg {
+    background-color: black;
+    height: 70vh;
+    width: 70vw;
+    margin: auto;
+    border-radius: 20px;
+    padding: 10px;
+    min-height: 70vh;
+    border: 5px solid black;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+}
+
+.chat {
+    background-color: #000;
+    border: 1px solid #0058ff;
+    border-radius: 10px;
+    max-width: 50vw;
+    min-width: 20vw;
+    width: min-content;
+    font-size: 16px;
+    padding: 8px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+}
+
+.right {
+    float: left;
+    align-self: flex-end;
+}
+
+.left {
+    float: right;
+    align-self: flex-start;
+}
+
+.chat span {
+    font-size: 10px;
+    padding-bottom: 4px;
+    text-align: start;
+    color: #ffe300;
+    font-weight: bold;
+}
+
+.joined {
+    text-align: center;
+    font-size: 12px;
+}
+
+.ess {
+    top: 80vh;
+    position: fixed;
+    width: 80vw;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.ess input {
+    width: 60%;
+    height: 24px;
+    background-color: black;
+    border: 2px solid white;
+    font-family: 'Josefin Sans',
+    sans-serif;
+    border-radius: 10px;
+    padding: 4px;
+    color: white;
+}
+
+.ess button {
+    background-color: black;
+    color: white;
+    font-family: 'Josefin Sans',
+    sans-serif;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-left: 6px;
+    padding: 5px;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) .4s;
+}
+
+.ess button:hover {
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transform: scale(1.122);
+}
+
+/* // anniyan // */
+
+.chat-bubble {
+    background-color: #0000009d;
+    padding: 4px 5px;
+    border-radius: 20px;
+    border-bottom-left-radius: 2px;
+    display: flex;
+    color: white;
+    max-width: max-content;
+    border: 1px solid red;
+}
+
+.typing {
+    align-items: center;
+    display: flex;
+    height: 17px;
+    color: white;
+}
+
+.typing span {
+    color: #1fb1d0;
+    font-size: 11px;
+}
+
+.typing .dot {
+    animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
+    background-color: #6CAD96; 
+    border-radius: 50%;
+    height: 2px;
+    margin-right: 4px;
+    vertical-align: middle;
+    width: 2px;
+    display: inline-block;
+}
+
+.typing .dot:nth-child(1) {
+    animation-delay: 200ms;
+}
+
+.typing .dot:nth-child(2) {
+    animation-delay: 300ms;
+}
+
+.typing .dot:nth-child(3) {
+    animation-delay: 400ms;
+}
+
+.typing .dot:last-child {
+    margin-right: 0;
+}
+
+.typing span {
+    color: #5f929d82;
+    font-size: 11px;
+}
+
+@keyframes mercuryTypingAnimation {
+    0% {
+        transform: translateY(0px);
+        background-color: #6CAD96; 
+    }
+
+    28% {
+        transform: translateY(-7px);
+        background-color: #9ECAB9; 
+    }
+
+    44% {
+        transform: translateY(0px);
+        background-color: #B5D9CB;
+    }
+}
