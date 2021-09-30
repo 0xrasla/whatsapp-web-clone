@@ -1,4 +1,4 @@
 # Chatii-bae
-## A whatsapp like Chat Web app build using socket.io. Under Construction 
+## A whatsapp like Chat Web app build using socket.io.
 
 ## Under Construction 🚧 ##
