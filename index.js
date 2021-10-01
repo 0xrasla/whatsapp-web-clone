@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     res.render("home")
 })
 
-app.post("/chat/create", (req, res) => {
+app.post("/chat", (req, res) => {
     room = req.body.roomname;
     username = req.body.name;
     res.render("chat");

@@ -15,6 +15,11 @@ document.querySelector("input").addEventListener("keypress", () => {
     showtyping = false;
 })
 
+document.querySelector("input").addEventListener("input", () => {
+    if (showtyping) socket.emit("typing");
+    showtyping = false;
+})
+
 document.querySelector("input").addEventListener("keyup", () => {
     setTimeout(() => {
         socket.emit("canceltyping");
