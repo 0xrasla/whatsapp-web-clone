@@ -8,6 +8,7 @@ body {
     font-size: 16px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 html {
@@ -25,10 +26,12 @@ html {
 }
 
 .container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: flex;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
 }
 
 .msg {
@@ -105,7 +108,7 @@ html {
 
 .ess {
     top: 80vh;
-    position: fixed;
+    position: absolute;
     width: 70%;
     display: flex;
     margin: auto;
@@ -252,11 +255,12 @@ html {
     }
 
     .ess {
-        width: 94%;
+        width: 98%;
     }
 
     .ess input {
-        min-width: 50%;
+        min-width: 30%;
+        max-width: 60%;
     }
 
     .leave {

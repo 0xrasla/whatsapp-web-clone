@@ -12,7 +12,6 @@ function refreshUserList(newUSer) {
     let chatdiv = document.createElement("div")
     chatdiv.className = "chat-list";
     for (let i of Object.values(newUSer.users)) {
-        console.log(i);
         if (i != "") {
             let el = document.createElement("div")
             el.className = "chat-member";
