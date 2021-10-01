@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+
 body {
     font-family: 'Josefin Sans',
-    sans-serif;
-    background: #134E5E;
-    background: -webkit-linear-gradient(to right, #71B280, #134E5E);
-    background: linear-gradient(to right, #71B280, #134E5E);
+        sans-serif;
+    background: #000;
     color: white;
     font-size: 16px;
+    display: flex;
+    flex-direction: column;
 }
 
 html {
@@ -26,21 +27,29 @@ html {
 .container {
     width: 80%;
     margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .msg {
     background-color: black;
-    height: 70vh;
-    width: 70vw;
-    margin: auto;
-    border-radius: 20px;
-    padding: 10px;
+    height: 80vh;
+    width: 50vw;
+    margin: 10px;
+    padding: 24px;
     min-height: 70vh;
     border: 5px solid black;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     font-size: 18px;
+    border: 1px solid white;
+    border-radius: 20px;
+}
+
+.chat-member {
+    padding: 20px 10px;
+    background-color: black;
 }
 
 .chat {
@@ -55,24 +64,38 @@ html {
     text-align: justify;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    word-wrap: break-word;
 }
 
 .right {
     float: left;
     align-self: flex-end;
+    flex-direction: row;
+    align-items: self-end;
+    display: block;
 }
 
 .left {
     float: right;
     align-self: flex-start;
+    display: flex;
+    flex-direction: column;
 }
 
-.chat span {
+.name {
     font-size: 10px;
     padding-bottom: 4px;
     text-align: start;
     color: #ffe300;
     font-weight: bold;
+}
+
+.time {
+    color: grey;
+    font-size: 9px;
+    text-align: end;
 }
 
 .joined {
@@ -83,20 +106,22 @@ html {
 .ess {
     top: 80vh;
     position: fixed;
-    width: 80vw;
+    width: 70%;
     display: flex;
     margin: auto;
-    justify-content: center;
+    justify-content: flex-start;
     border-radius: 20px;
+    gap: 7px;
 }
 
 .ess input {
-    width: 60%;
+    min-width: 60%;
+    max-width: 80%;
     height: 24px;
     background-color: black;
     border: 2px solid white;
     font-family: 'Josefin Sans',
-    sans-serif;
+        sans-serif;
     border-radius: 10px;
     padding: 4px;
     color: white;
@@ -105,13 +130,12 @@ html {
 .ess button {
     background-color: black;
     color: white;
-    font-family: 'Josefin Sans',
-    sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     border: 2px solid white;
     border-radius: 10px;
-    margin-left: 6px;
-    padding: 5px;
+    padding: 0px;
     transition: cubic-bezier(0.075, 0.82, 0.165, 1) .4s;
+    width: 10%;
 }
 
 .ess button:hover {
@@ -134,6 +158,33 @@ html {
     border: 1px solid red;
 }
 
+/* // chat-list // */
+
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    background: black;
+}
+
+/* // chat-list // */
+
+.leave {
+    max-width: 100px;
+    margin: 0px 22vw;
+    padding: 10px;
+    background: black;
+    color: white;
+    font-family: inherit;
+    border-radius: 50px;
+}
+
+.leave:hover {
+    cursor: pointer;
+}
+
 .typing {
     align-items: center;
     display: flex;
@@ -148,7 +199,7 @@ html {
 
 .typing .dot {
     animation: mercuryTypingAnimation 1.8s infinite ease-in-out;
-    background-color: #6CAD96; 
+    background-color: #6CAD96;
     border-radius: 50%;
     height: 2px;
     margin-right: 4px;
@@ -181,16 +232,34 @@ html {
 @keyframes mercuryTypingAnimation {
     0% {
         transform: translateY(0px);
-        background-color: #6CAD96; 
+        background-color: #6CAD96;
     }
 
     28% {
         transform: translateY(-7px);
-        background-color: #9ECAB9; 
+        background-color: #9ECAB9;
     }
 
     44% {
         transform: translateY(0px);
         background-color: #B5D9CB;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .msg {
+        width: 80vw;
+    }
+
+    .ess {
+        width: 94%;
+    }
+
+    .ess input {
+        min-width: 50%;
+    }
+
+    .leave {
+        margin: 0px 11vw;
     }
 }

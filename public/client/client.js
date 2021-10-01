@@ -1,5 +1,7 @@
+import * as Utils from "./utils.js";
 let socket = io();
 let username = "";
+let usercount = '';
 
 socket.on("newconn", (n) => { username = n; })
 
@@ -21,48 +23,42 @@ document.querySelector("input").addEventListener("keyup", () => {
 })
 
 socket.on("message", (d) => {
-    const msg = document.createElement("p");
-    msg.className = "chat";
-    if (socket.id != d.id) {
-        msg.classList.add("left");
-        msg.innerHTML = `<span>${d.name}</span>` + " " + d.message;
-    } else {
-        msg.classList.add("right");
-        msg.innerHTML = d.message;
-    }
-    socket.emit("canceltyping");
-    document.querySelector(".msg").appendChild(msg);
-    document.querySelector("input").value = "";
+    const newMessage = Utils.default[2];
+    newMessage(d, socket);
 })
 
 socket.on("newconn", (newUSer) => {
-    const msg = document.createElement("p");
-    msg.className = "joined";
-    msg.innerText = newUSer + "  joined the chat...";
-    document.querySelector(".msg").appendChild(msg);
+    const newconn = Utils.default[0];
+    newconn(newUSer, usercount);
 })
 
 socket.on("usertype", (e) => {
-    if (socket.id != e.id) {
-        const msg = document.createElement("div");
-        msg.className = "chat-bubble";
-        if (socket.id != e.id) {
-            msg.classList.add("left");
-        } else {
-            msg.classList.add("right");
-        }
-        msg.innerHTML = `<div class="typing">
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <div class="dot"></div>
-                            <span>${e.name}</span>
-                        </div>`;
-        document.querySelector(".msg").appendChild(msg);
-    }
+    const typing = Utils.default[1];
+    typing(socket, e)
 })
 
 socket.on("removetypingwidget", () => {
     const chatbubble = document.querySelector(".chat-bubble");
     if (chatbubble) document.querySelector(".msg").removeChild(chatbubble);
     showtyping = true;
+})
+
+// leaving
+document.querySelector(".leave").addEventListener("click", () => {
+    socket.emit("leave", username);
+    document.querySelector("h1").innerText = "Online : " + usercount;
+})
+
+socket.on("personleaves", (e) => {
+    const msg = document.createElement("p");
+    msg.className = "joined";
+    msg.innerText = e.name + "  leaved the chat...";
+    document.querySelector("h1").innerText = "Online : " + e.count;
+    document.querySelector(".msg").appendChild(msg);
+    let refresh = Utils.default[3]
+    refresh(e)
+    if (e.id == socket.id) {
+        let baseurl = String(window.location).split("/")
+        window.location.replace(baseurl[0] + "/" + baseurl[1])
+    }
 })

@@ -6,6 +6,7 @@ const io = require("socket.io")(http)
 
 let users = {}
 let room, username = "";
+let onlinecount = 0;
 
 app.use(express.static("public"))
 app.use(express.urlencoded({
@@ -25,10 +26,10 @@ app.post("/chat/create", (req, res) => {
 
 
 io.on("connection", (socket) => {
-
     socket.join(room);
+    onlinecount++;
     users[socket.id] = username;
-    io.to(room).emit("newconn", users[socket.id])
+    io.to(room).emit("newconn", { name: users[socket.id], count: onlinecount, users: users })
 
     socket.on('send', (e) => {
         io.to(room).emit("message", {
@@ -48,6 +49,20 @@ io.on("connection", (socket) => {
     socket.on("canceltyping", () => {
         io.to(room).emit("removetypingwidget");
     })
+
+    socket.on("leave", (e) => {
+        onlinecount--;
+        let leavedOne = users[socket.id]
+        delete users[socket.id]
+        io.to(room).emit("personleaves", { name: leavedOne, count: onlinecount, users: users, id: socket.id });
+        socket.leave(room);
+    })
+
+    socket.on('disconnect', function () {
+        delete users[socket.id]
+        onlinecount--;
+    });
+
 })
 
 http.listen("3000", () => { console.log("Server Started...."); })
