@@ -14,13 +14,20 @@
 
 # **Website**
 
+## Chat Home
 
-## Home Page
-<img src="https://github.com/Rasla-Dev/MEN_stack_blog_app/blob/main/final/Home.png?raw=true" alt="page">
+<img src="https://raw.githubusercontent.com/Rasla-Dev/Chatii-bae/main/public/images/chat1.png" alt="page">
 
-## All Blog Page
+## Chat Page
+<img src="https://raw.githubusercontent.com/Rasla-Dev/Chatii-bae/main/public/images/chat%202.png" alt="page">
 
-<img src="https://github.com/Rasla-Dev/MEN_stack_blog_app/blob/main/final/All.png?raw=true" alt="page">
+## Typing Notification
+<img src="https://raw.githubusercontent.com/Rasla-Dev/Chatii-bae/main/public/images/chat3.png" alt="page">
 
-## Edit Page
-<img src="https://github.com/Rasla-Dev/MEN_stack_blog_app/blob/main/final/Edit.png?raw=true" alt="page">
+## Bubble Style
+<img src="https://raw.githubusercontent.com/Rasla-Dev/Chatii-bae/main/public/images/chat%204.png" alt="page">
+
+
+### Youtube : https://www.youtube.com/channel/UCRN9vGi3hFXPEy949UiD0jg
+
+## Dont Forget to 🥰 Star the repo! Have a Good Day!😍
