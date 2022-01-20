@@ -2,7 +2,7 @@ import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Login, Logout, HomePage } from "./components/index";
 
 const Home: NextPage = () => {
@@ -12,16 +12,17 @@ const Home: NextPage = () => {
   const [userAllowed, setuserAllowed] = useState(false);
 
   const LoginResponse = (res: { tokenId: "" }) => {
-    axios
-      .post("/api/validate", { acc: res.tokenId, client_id: c_Id })
-      .then((res) => {
-        setuserAllowed(res.data.ok);
-        if (!res.data.ok) {
-          router.reload();
-        } else {
-          router.push("/chat");
-        }
-      });
+    axios.defaults.headers.common["Authorization"] = res.tokenId;
+
+    axios.get("/api/login").then((res) => {
+      setuserAllowed(res.data.ok);
+      if (!res.data.ok) {
+        router.reload();
+        console.log("error");
+      } else {
+        router.push("/chat");
+      }
+    });
   };
 
   return (
