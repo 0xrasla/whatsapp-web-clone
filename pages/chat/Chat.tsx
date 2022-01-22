@@ -2,9 +2,13 @@ import { useRef, useState } from "react";
 import ChatStyles from "../../styles/Chat.module.css";
 
 interface Props {
-  payload: any;
+  payload: payload;
   chats: string[];
   cb: Function;
+}
+
+interface payload {
+  name: string;
 }
 
 const Chat = ({ payload, chats, cb }: Props) => {
@@ -15,19 +19,21 @@ const Chat = ({ payload, chats, cb }: Props) => {
     <div className={ChatStyles.container}>
       <div className="">
         <h2 className={ChatStyles.header}>
-          Welcome {payload.name}, <div>Lets Chat!</div>
+          Welcome {payload && payload.name ? payload.name : ""},{" "}
+          <div>Lets Chat!</div>
         </h2>
       </div>
       <div className={ChatStyles.chatdiv}>
         <div>
-          {chats.map((e, i) => {
-            return (
-              <div key={i} className={ChatStyles.chatbubbleleft}>
-                {e}
-                <br />
-              </div>
-            );
-          })}
+          {chats &&
+            chats.map((e, i) => {
+              return (
+                <div key={i} className={ChatStyles.chatbubbleleft}>
+                  {e}
+                  <br />
+                </div>
+              );
+            })}
         </div>
         <input
           onChange={(e) => {
