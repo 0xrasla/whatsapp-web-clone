@@ -11,13 +11,13 @@ const useAuth = () => {
   const router = useRouter();
 
   useEffect(() => {
-    axios.get("/api/authorize").then((res) => {
-      if (res.data.ok) {
-        setUserData(res.data.payload);
-      } else {
-        router.push("/");
-      }
-    });
+    // axios.get("/api/authorize").then((res) => {
+    //   if (res.data.ok) {
+    //     setUserData(res.data.payload);
+    //   } else {
+    //     router.push("/");
+    //   }
+    // });
   }, []);
 
   return [userData];
