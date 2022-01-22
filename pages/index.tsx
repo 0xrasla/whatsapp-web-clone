@@ -2,9 +2,11 @@ import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
-import { Login, Logout, HomePage } from "./components/index";
+import HomePage from "./components/Home";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
 
+import { useState } from "react";
 const Home: NextPage = () => {
   const router = useRouter();
 

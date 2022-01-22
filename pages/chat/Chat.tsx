@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { Logout } from "../components";
 import ChatStyles from "../../styles/Chat.module.css";
 
 interface Props {
@@ -46,7 +45,10 @@ const Chat = ({ payload, chats, cb }: Props) => {
           }}
         >
           <span>
-            <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/filled-sent.png" />
+            <img
+              src="https://img.icons8.com/ios-glyphs/30/eeeeee/filled-sent.png"
+              alt="Its Mic"
+            />
           </span>
         </button>
       </div>
