@@ -2,7 +2,7 @@ import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Login, Logout, HomePage } from "./components/index";
 
 const Home: NextPage = () => {
