@@ -19,7 +19,7 @@ const Chat = ({ payload, chats, cb }: Props) => {
     <div className={ChatStyles.container}>
       <div className="">
         <h2 className={ChatStyles.header}>
-          Welcome {payload && payload.name ? payload.name : ""},{" "}
+          Welcome {payload ? payload?.name : ""}
           <div>Lets Chat!</div>
         </h2>
       </div>

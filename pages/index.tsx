@@ -16,6 +16,10 @@ const Home: NextPage = () => {
   const LoginResponse = (res: { tokenId: "" }) => {
     axios.defaults.headers.common["Authorization"] = res.tokenId;
 
+    console.log("hai");
+
+    console.log(res);
+
     axios.get("/api/login").then((res) => {
       setuserAllowed(res.data.ok);
       if (!res.data.ok) {
