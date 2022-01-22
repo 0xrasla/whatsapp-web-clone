@@ -8,7 +8,7 @@ interface Props {
   cb: Function;
 }
 
-export const Chat = ({ payload, chats, cb }: Props) => {
+const Chat = ({ payload, chats, cb }: Props) => {
   const [c_Id, setCid] = useState(process.env.NEXT_PUBLIC_CLIENT_ID);
   const [message, setMessage] = useState("");
 
@@ -53,3 +53,5 @@ export const Chat = ({ payload, chats, cb }: Props) => {
     </div>
   );
 };
+
+export default Chat;

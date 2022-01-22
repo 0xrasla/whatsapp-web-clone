@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import useAuth from "../../hooks/useAuth";
-import { Chat } from "./Chat";
+import Chat from "./Chat";
 import { io } from "socket.io-client";
 import { useEffect, useState } from "react";
 import axios from "axios";

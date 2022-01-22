@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-export const Unauthorized = () => {
+const Unauthorized = () => {
   const router = useRouter();
 
   return (
@@ -18,3 +18,5 @@ export const Unauthorized = () => {
     </div>
   );
 };
+
+export default Unauthorized;
