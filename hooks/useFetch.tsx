@@ -1,5 +1,16 @@
 import { useEffect, useState } from "react";
 
+interface fetchInterface {
+  url: string;
+  options: {};
+}
+
+interface IuseFetchReturn {
+  Results: {};
+  Error: string;
+  Loaded: boolean;
+}
+
 export const useFetch = ({ url, options }: fetchInterface): IuseFetchReturn => {
   const [Results, setResults] = useState({});
   const [Error, setError] = useState("");
