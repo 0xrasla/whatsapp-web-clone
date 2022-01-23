@@ -10,8 +10,14 @@ interface Props {
   user: any;
 }
 
+interface chatBubble {
+  name: string;
+  image: string;
+  message: string;
+}
+
 const ChatHome = ({ user }: Props) => {
-  const [Chats, setChats]: [string[], Function] = useState([]);
+  const [Chats, setChats]: [chatBubble[], Function] = useState([]);
   const [message, setMessage] = useState("");
 
   useEffect((): any => {
@@ -29,7 +35,13 @@ const ChatHome = ({ user }: Props) => {
 
     socket.on("chat", (data) => {
       console.log(data);
-      let message = `${data.user} : ${data.message}`;
+
+      let message: chatBubble = {
+        image: data.image,
+        message: data.message,
+        name: data.name,
+      };
+
       Chats.push(message);
       setChats([...Chats]);
     });
@@ -41,10 +53,9 @@ const ChatHome = ({ user }: Props) => {
     if (!message) return;
     await axios.post("/api/chat/", {
       message: message,
-      user: user.name,
+      name: user.name,
+      image: user.image,
     });
-
-    console.log(Chats);
   };
 
   return (
@@ -64,13 +75,38 @@ const ChatHome = ({ user }: Props) => {
         </div>
       </span>
       <div className={Styles.chatContainer}>
-        <div className={Styles.insidechat}>
-          {Chats.map((e, i) => {
-            return <p key={i}>{e}</p>;
-          })}
-        </div>
+        <span>
+          <div className={Styles.insidechat}>
+            {Chats.map((e, i) => {
+              return (
+                <span key={i}>
+                  <p
+                    className={
+                      e.name != user.name
+                        ? Styles.chatbubbleleft
+                        : Styles.chatbubbleright
+                    }
+                    key={i}
+                  >
+                    <p>{e.name}</p>
+                    <span>
+                      <Image
+                        src={e && e?.image}
+                        alt="User"
+                        width="25px"
+                        height="25px"
+                      />
+                      {e.message}
+                    </span>
+                  </p>
+                </span>
+              );
+            })}
+          </div>
+        </span>
         <input
           type="text"
+          placeholder="Enter text to chat"
           value={message}
           onChange={(e) => {
             setMessage(e.target.value);
