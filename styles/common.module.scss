@@ -26,6 +26,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: auto;
+  min-width: 90%;
 
   .chatHeader {
     .userInfo {
@@ -68,25 +71,29 @@
     height: 50rem;
     background-color: rgb(38, 36, 36);
 
+    .insidechat {
+      padding-left: 20px;
+      padding-top: 20px;
+    }
+
     input {
       position: absolute;
       width: 90%;
       background-color: black;
       border: 1px solid white;
-      bottom: 20px;
-      left: 30px;
+      bottom: 2%;
+      left: 5%;
       height: 40px;
       border-radius: 20px;
       color: white;
       font-size: 1rem;
-      padding: 10px;
       font-family: "Josefin Sans", sans-serif;
     }
 
     .sendbutton {
       position: absolute;
-      bottom: 26px;
-      right: 45px;
+      bottom: 2.7%;
+      right: 8%;
 
       &:hover {
         cursor: pointer;
