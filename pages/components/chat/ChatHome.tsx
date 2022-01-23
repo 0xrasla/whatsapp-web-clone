@@ -28,6 +28,7 @@ const ChatHome = ({ user }: Props) => {
     });
 
     socket.on("chat", (data) => {
+      console.log(data);
       let message = `${data.user} : ${data.message}`;
       Chats.push(message);
       setChats([...Chats]);
@@ -38,10 +39,12 @@ const ChatHome = ({ user }: Props) => {
 
   const SendMessage = async (message: {}) => {
     if (!message) return;
-    await axios.post("/api/chat", {
+    await axios.post("/api/chat/", {
       message: message,
       user: user.name,
     });
+
+    console.log(Chats);
   };
 
   return (

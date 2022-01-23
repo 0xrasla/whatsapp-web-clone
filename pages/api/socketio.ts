@@ -9,14 +9,10 @@ export const config = {
   },
 };
 
-<<<<<<< HEAD
 const SocketIO = async (
   req: NextApiRequest,
   res: NextApiResponseServerIO
 ): Promise<any> => {
-=======
-export default async (req: NextApiRequest, res: NextApiResponseServerIO) => {
->>>>>>> main
   if (!res.socket.server.io) {
     const httpServer: NetServer = res.socket.server as any;
     const io = new ServerIO(httpServer, {
@@ -26,8 +22,5 @@ export default async (req: NextApiRequest, res: NextApiResponseServerIO) => {
   }
   res.end();
 };
-<<<<<<< HEAD
 
 export default SocketIO;
-=======
->>>>>>> main
