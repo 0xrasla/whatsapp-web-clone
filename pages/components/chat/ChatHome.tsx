@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import axios from "axios";
+import prisma from "../../../lib/prisma";
 
 interface Props {
   expires: string;
@@ -20,10 +21,19 @@ const ChatHome = ({ user }: Props) => {
   const [Chats, setChats]: [chatBubble[], Function] = useState([]);
   const [message, setMessage] = useState("");
 
+  const fetchChat = () => {
+    (async () => {
+      let chats = await axios.get("/api/fetchchat");
+      setChats(chats?.data?.chats);
+    })();
+  };
+
   useEffect((): any => {
     const socket = io(process.env.URL || "", {
       path: "/api/socketio",
     });
+
+    fetchChat();
 
     socket.on("connect", () => {
       console.log("new User");
@@ -33,29 +43,30 @@ const ChatHome = ({ user }: Props) => {
       console.log(reason);
     });
 
-    socket.on("chat", (data) => {
-      console.log(data);
-
-      let message: chatBubble = {
-        image: data.image,
-        message: data.message,
-        name: data.name,
-      };
-
-      Chats.push(message);
-      setChats([...Chats]);
+    socket.on("chat", async (data) => {
+      let chats = await axios.get("/api/fetchchat");
+      setChats(chats?.data?.chats);
     });
 
     if (socket) return () => socket.disconnect();
   }, []);
 
-  const SendMessage = async (message: {}) => {
+  const SendMessage = async (message: any) => {
     if (!message) return;
     await axios.post("/api/chat/", {
       message: message,
       name: user.name,
       image: user.image,
     });
+
+    let currMessage: chatBubble = {
+      message: message,
+      name: user.name,
+      image: user.image,
+    };
+
+    Chats.push(currMessage);
+    setChats([...Chats]);
   };
 
   return (
@@ -80,7 +91,7 @@ const ChatHome = ({ user }: Props) => {
             {Chats.map((e, i) => {
               return (
                 <span key={i}>
-                  <p
+                  <div
                     className={
                       e.name != user.name
                         ? Styles.chatbubbleleft
@@ -98,7 +109,7 @@ const ChatHome = ({ user }: Props) => {
                       />
                       {e.message}
                     </span>
-                  </p>
+                  </div>
                 </span>
               );
             })}
