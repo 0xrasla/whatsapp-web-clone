@@ -1,0 +1,47 @@
+.container-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .auth-screen {
+    background-color: aliceblue;
+    width: 70vw;
+    height: 80vh;
+    color: black;
+    font-size: 2rem;
+    display: flex;
+    border-radius: 20px;
+
+    .side-1 {
+      width: 30%;
+      align-self: center;
+      margin: 20px;
+    }
+
+    .side-2 {
+      align-self: center;
+      width: 70%;
+      margin: 60px;
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+    }
+
+    input {
+      width: 70%;
+      height: 3rem;
+      border: none;
+      border-bottom: 1px solid black;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      font-size: 1.5rem;
+      border-radius: 10px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
