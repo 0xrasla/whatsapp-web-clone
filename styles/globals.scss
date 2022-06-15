@@ -1,13 +1,12 @@
 @import "auth/auth.scss";
-@import url("https://fonts.googleapis.com/css2?family=Joan&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Joan&family=PT+Sans&display=swap");
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Joan", serif;
-  background-color: black;
-  color: white;
+  font-family: "PT Sans", sans-serif;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 a {
@@ -17,4 +16,60 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.container-home {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10%;
+  clip-path: ellipse(144% 100% at 128.96% 0%);
+  background-color: #dc3d4b;
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-family: "PT Sans", sans-serif;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  p {
+    font-size: 1.4rem;
+    margin: 0 2rem;
+    color: white;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  h3 {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: white;
+    font-family: "PT Sans", sans-serif;
+  }
+
+  button {
+    padding: 15px;
+    font-family: "PT Sans", sans-serif;
+    border-radius: 10px;
+    background-color: #dc3d4b;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    box-shadow: 2px 3px 4px black;
+
+    &:hover {
+      background-color: #dc3d4b;
+      color: white;
+      box-shadow: none;
+      cursor: pointer;
+      transform: translateY(-3px);
+      box-shadow: 1px 1px 1px black;
+    }
+  }
 }
