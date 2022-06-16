@@ -21,7 +21,7 @@ const Login = () => {
     }
 
     if (res.data.ok) {
-      redirect("/chat");
+      redirect("/rooms");
     }
   };
 

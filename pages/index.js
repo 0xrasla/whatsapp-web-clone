@@ -1,18 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { prisma } from "./db/client";
 
-export const getServerSideProps = async (ctx) => {
-  const users = await prisma.user.findMany();
-  return {
-    props: {
-      message: "Hello World",
-      data: JSON.stringify(users),
-    },
-  };
-};
-
-export default function Home({ message, data }) {
+export default function Home() {
   const route = useRouter();
   const redirect = (url) => route.push(url);
 

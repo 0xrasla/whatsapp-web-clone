@@ -16,3 +16,10 @@ model User {
   picture    String
   created_at DateTime @default(now())
 }
+
+model Room {
+  id           String   @id @default(uuid())
+  name         String
+  membersCount Int      @default(0)
+  created_at   DateTime @default(now())
+}
