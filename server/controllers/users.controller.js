@@ -9,9 +9,13 @@ exports.createUser = async (req, res) => {
       throw new CommonErrors(res, "Fields Required").throw();
 
     const _exists = await User.findOne({ email });
+    const _usernameexists = await User.findOne({ username });
 
-    if (_exists)
-      throw new CommonErrors(res, "User With Same email already found").throw();
+    if (_exists || _usernameexists)
+      throw new CommonErrors(
+        res,
+        "User With Same email or username already found"
+      ).throw();
 
     const user = new User({
       email: email,
@@ -24,6 +28,38 @@ exports.createUser = async (req, res) => {
       message: "User Created",
       ok: true,
       data: user,
+    });
+  } catch (e) {
+    return new CommonErrors(res, e.message).throw();
+  }
+};
+
+exports.getAllUser = async (req, res) => {
+  try {
+    const users = await User.find({});
+
+    return res.json({
+      message: "Users Fetched",
+      ok: true,
+      data: users,
+    });
+  } catch (e) {
+    return new CommonErrors(res, e.message).throw();
+  }
+};
+
+exports.getContacts = async (req, res) => {
+  try {
+    const { userid } = req.body;
+
+    if (!userid) throw new CommonErrors(res, "Fields Required").throw();
+
+    const users = await User.findById(userid).populate("contacts");
+
+    return res.json({
+      message: "Users Fetched",
+      ok: true,
+      data: users,
     });
   } catch (e) {
     return new CommonErrors(res, e.message).throw();
